@@ -1,1 +1,1 @@
-pygbag --title 'Derricks Snowboard Adventure' --icon 'favicon.png' --app_name 'Derricks Snowboard Adventure' main.py
+pygbag --title 'Derricks Snowboard Adventure' --icon 'favicon.png' --app_name 'Derricks Snowboard Adventure' .
