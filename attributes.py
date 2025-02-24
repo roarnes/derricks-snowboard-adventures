@@ -1,7 +1,7 @@
 import pygame
 import random
 
-game_speed = 3
+game_speed = 5
 
 
 class Tree(pygame.sprite.Sprite):
@@ -25,7 +25,6 @@ class Tree(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
 
     def update(self):
-        # self.x_pos -= game_speed
         self.rect.x -= 1
 
 
@@ -38,7 +37,8 @@ class Cloud(pygame.sprite.Sprite):
 
         self.sprites = []
         for i in range(1, 7):
-            original_image = pygame.image.load(f"assets/clouds/cloud{i}.png")
+            original_image = pygame.image.load(
+                f"assets/clouds/cloud{i}.png")
 
             original_width, original_height = original_image.get_size()
 
@@ -75,7 +75,7 @@ class Derrick(pygame.sprite.Sprite):
         self.image = self.ride_img
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
         self.velocity = 20
-        self.gravity = 3
+        # self.gravity = 3
         self.ducking = False
         self.jumping = False
 
@@ -83,8 +83,8 @@ class Derrick(pygame.sprite.Sprite):
         if not self.jumping and self.rect.centery == 360:  # Allow jump only if on ground
             self.jumping = True
             # Start with an initial negative velocity (jump impulse)
-            self.velocity = -6
-            jump_sfx = pygame.mixer.Sound("assets/sfx/jump.mp3")
+            self.velocity = -8
+            jump_sfx = pygame.mixer.Sound("assets/sfx/jump.ogg")
             jump_sfx.play()
 
     def duck(self):
@@ -99,7 +99,7 @@ class Derrick(pygame.sprite.Sprite):
 
         if self.jumping:
             self.rect.centery += self.velocity  # Move up or down
-            self.velocity += 0.1  # Simulate gravity
+            self.velocity += 0.3  # Simulate gravity
 
             if self.rect.centery >= 360:  # If Derrick lands back
                 self.rect.centery = 360
@@ -125,10 +125,10 @@ class RunningCat(pygame.sprite.Sprite):
 
         # Load sprite animations
         self.buttface_sprites = [
-            pygame.transform.scale(pygame.image.load(f"assets/Buttface{i}.png"), (60, 60)) for i in range(1, 3)
+            pygame.transform.scale(pygame.image.load(f"assets/Buttface{i}.png"), (55, 55)) for i in range(1, 3)
         ]
         self.dumdum_sprites = [
-            pygame.transform.scale(pygame.image.load(f"assets/Dumdum{i}.png"), (60, 60)) for i in range(1, 3)
+            pygame.transform.scale(pygame.image.load(f"assets/Dumdum{i}.png"), (55, 55)) for i in range(1, 3)
         ]
 
         # Store animations separately
@@ -144,8 +144,7 @@ class RunningCat(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
 
         # Animation timers
-        self.animation_speed = 0.025  # Adjust speed of animation
-        self.switch_timer = 2  # Timer for switching between dumdum & buttface
+        self.animation_speed = 0.05  # Adjust speed of animation
         self.frame_timer = 0  # Timer for frame animation
 
     def update(self):
@@ -173,10 +172,10 @@ class FlyingCat(pygame.sprite.Sprite):
 
         # Load sprite animations
         self.buttface_sprites = [
-            pygame.transform.scale(pygame.image.load(f"assets/ButtfaceFly{i}.png"), (60, 60)) for i in range(1, 3)
+            pygame.transform.scale(pygame.image.load(f"assets/ButtfaceFly{i}.png"), (55, 55)) for i in range(1, 3)
         ]
         self.dumdum_sprites = [
-            pygame.transform.scale(pygame.image.load(f"assets/DumdumFly{i}.png"), (60, 60)) for i in range(1, 3)
+            pygame.transform.scale(pygame.image.load(f"assets/DumdumFly{i}.png"), (55, 55)) for i in range(1, 3)
         ]
 
         # Store animations separately
@@ -188,8 +187,7 @@ class FlyingCat(pygame.sprite.Sprite):
         self.image = self.sprites[self.current_sprite_index][self.current_image_index]
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
 
-        self.animation_speed = 0.025  # Adjust speed of animation
-        self.switch_timer = 0  # Timer for switching between dumdum & buttface
+        self.animation_speed = 0.05  # Adjust speed of animation
         self.frame_timer = 0  # Timer for frame animation
 
     def update(self):
