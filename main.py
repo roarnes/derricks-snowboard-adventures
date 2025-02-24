@@ -73,7 +73,7 @@ def end_game():
     score_text = game_font.render(f"Score: {int(player_score)}", True, "black")
     score_rect = score_text.get_rect(center=(640, 140))
     restart_text = game_small_font.render(
-        "Press any key to restart game", True, "gray")
+        "Press space to restart game", True, "gray")
     restart_text_rect = restart_text.get_rect(center=(640, 190))
 
     screen.blit(game_over_text, game_over_rect)
