@@ -1,1 +1,1 @@
-pygbag --build --title 'Derricks Snowboard Adventure' --icon 'favicon.png' --app_name 'Derricks Snowboard Adventure' .
+pygbag --build --ume_block 0 --title 'Derricks Snowboard Adventure' --icon 'favicon.png' --app_name 'Derricks Snowboard Adventure' .
